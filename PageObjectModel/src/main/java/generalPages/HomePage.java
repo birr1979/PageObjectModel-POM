@@ -1,44 +1,44 @@
 package generalPages;
 
 import org.openqa.selenium.By;
-
+import org.openqa.selenium.WebElement;
 
 import base.BasePage;
 
 
 public class HomePage extends BasePage {
-	
-//	WebDriver driver;
-	
-//	//Create a Constructor so the driver reference can be passed to the elements/methods in this page
-//	public HomePage(WebDriver driver) {
-//		this.driver = driver;
-//	}
-	
+
+	//Elements on the page
+
+	WebElement customers= driver.findElement(By.xpath("//body/div[3]/div[2]/div[1]/a[1]"));
+	WebElement sales= driver.findElement(By.xpath("//body/div[3]/div[2]/div[1]/a[4]"));
+	WebElement FreeSignUp= driver.findElement(By.xpath("//body[1]/div[3]/div[2]/div[1]/a[6]"));
 	By signInLink = By.xpath("//a[contains(text(),'Sign in')]");
-	
-	public void goToCustomers() {
-		
+
+
+	//Methods to perform action
+
+	public CustomersPage goToCustomers() {
+		customers.click();
+		return new CustomersPage();
+
 	}
-	
-	public void goToSales() {
-		
+
+	public SalesPage goToSales() {
+		sales.click();
+		return new SalesPage();
 	}
-	
-//	public String myName(String name) {
-//		
-//		return name;
-//	}
-	
+
+
 	public SignInPage goToSignIn() {
 		driver.findElement(signInLink).click();
-		
 		return new SignInPage();
 	}
-	
-	public void goToSignUp() {
-		System.out.println("Calling the SignUP Method");
+
+	public SignUpPage goToSignUp() {
+		FreeSignUp.click();
+		return new SignUpPage();
 	}
-	
+
 
 }
